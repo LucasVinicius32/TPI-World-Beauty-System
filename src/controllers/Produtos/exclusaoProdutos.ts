@@ -15,7 +15,7 @@ export default class ExclusaoProdutos extends Exclusao {
 
   public excluir(): void {
     let codigo = this.entrada.receberNumero(
-      `Por favor, escolha um codigo de produto:`
+      `Por favor, digite o código do produto para ser excluído:`
     );
     const updatedProduct: Product[] = [];
     this.filial.getProdutos.forEach((product) => {

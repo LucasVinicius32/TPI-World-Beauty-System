@@ -11,10 +11,18 @@ import ListagemProdutos from "./controllers/Produtos/listagemProdutos";
 import EdicaoProdutos from "./controllers/Produtos/edicaoProduto";
 import ExclusaoProdutos from "./controllers/Produtos/exclusaoProdutos";
 
-import CadastroServico from "./controllers/Servicos/cadastrarServico";
-import ListagemServicos from "./controllers/Servicos/listagemServicos";
-import EdicaoServicos from "./controllers/Servicos/edicaoServico";
-import ExclusaoServicos from "./controllers/Servicos/exclusaoServicos";
+import CadastroPedido from "./controllers/Pedido/CreatePedidos";
+import ListaPedido from "./controllers/Pedido/ListaPedidos";
+import DeletePedido from "./controllers/Pedido/DeletePedido";
+
+import ListagemGenero from "./controllers/Listagem/listagemGenero";
+import ListaConsMore from "./controllers/Listagem/ListaConsMore";
+import ProdutoLassLista from "./controllers/Listagem/ProdutoLassLista";
+import MoreProdutoLista from "./controllers/Listagem/MoreProdutoLista";
+
+import produtosListagem from "./controllers/ListagemProdutos/produtosListagem";
+import ProdutosGenero from "./controllers/ListagemProdutos/generoListagem";
+
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty\n`);
 let empresa = new Subsidiary(
@@ -29,26 +37,21 @@ while (execucao) {
   console.log("\n-------- CLIENTES --------");
   console.log(`1 - Cadastrar cliente`);
   console.log(`2 - Listar Todos os Clientes`);
-  console.log(`333 - Lista de Clientes por Gênero`);
-  console.log(`3 - Editar Cliente`);
-  console.log(`4 - Excluir Cliente`);
+  console.log(`3 - Listar de Clientes por Filtros`);
+  console.log(`4 - Editar Cliente`);
+  console.log(`5 - Excluir Cliente`);
 
   console.log("\n-------- PRODUTOS --------");
-  console.log(`5 - Cadastrar Produtos`);
-  console.log(`6 - Listar Todos os Produtos`);
-  console.log(`7 - Editar Produtos`);
-  console.log(`8 - Excluir Produtos`);
-
-  console.log("\n-------- SERVIÇOS --------");
-  console.log(`9- Cadastrar Serviços`);
-  console.log(`10 - Listar Todos os Serviços`);
-  console.log(`11 - Editar Serviços`);
-  console.log(`12 - Excluir Serviços`);
+  console.log(`6 - Cadastrar Produtos`);
+  console.log(`7 - Listar Todos os Produtos`);
+  console.log(`8 - Listar de Produtos por Filtros`);
+  console.log(`9 - Editar Produtos`);
+  console.log(`10 - Excluir Produtos`);
 
   console.log("\n-------- PEDIDO --------");
-  console.log(`13 - Cadastrar Pedido`);
-  console.log(`14 - Excluir Pedido`);
-  console.log(`15 - Listar Todos os Pedidos`);
+  console.log(`11 - Cadastrar Pedido`);
+  console.log(`12 - Excluir Pedido`);
+  console.log(`13 - Listar Todos os Pedidos`);
   
 
   console.log("\n-------- SAIR --------");
@@ -67,58 +70,107 @@ while (execucao) {
       listarCli.listar();
       break;
     case 3:
+      console.log(`
+      Que filtro gostaria de aplicar?
+      [1] 10 clientes que mais consumiram produtos em quantidade , não em valor
+      [2] Classificação por gênero
+      [3] 10 clientes que menos consumiram produtos 
+      [4] 5 clientes que mais consumiram em valor, não em quantidade
+      `);
+
+      opcao = entrada.receberNumero(`Por favor, escolha uma opção: `);
+
+      switch (opcao) {
+        case 1: 
+          let listarConsMore = new ListaConsMore(empresa);
+          listarConsMore.listar();
+          break
+
+        case 2:
+           // Classificação por gênero
+          let listarGenero = new ListagemGenero(empresa);
+          listarGenero.listar();
+          break
+        
+        case 3:
+          // 10 clientes que menos consumiram produtos 
+          let ListaMoreProdutos = new MoreProdutoLista(empresa);
+          ListaMoreProdutos.listar();
+          break
+        
+        case 4: 
+          // 5 clientes que mais consumiram em valor, não em quantidade
+          let ListaLassProduto = new ProdutoLassLista(empresa);
+          ListaLassProduto.listar();
+          break
+
+      default:
+        console.log(`Escolha Alguma opção corretamente '='  `);
+    }
+      break;
+    case 4:
       let editarCli = new EdicaoClientes(empresa);
       editarCli.editar();
       break;
-    case 4:
+    case 5:
       let excluirCli = new ExclusaoClientes(empresa);
       excluirCli.excluir();
       break;
 
-    case 5:
+    case 6:
       let cadastrarProd = new CadastroProduto(empresa);
       cadastrarProd.cadastrar();
       break;
-    case 6:
+    case 7:
       let listarProd = new ListagemProdutos(empresa);
       listarProd.listar();
       break;
-    case 7:
+    case 8:
+      console.log(`
+      Que filtro gostaria de aplicar?
+      [1] Listagem geral produtos mais consumidos
+      [2] Listagem dos produtos mais consumidos por gênero.
+      `);
+      opcao = entrada.receberNumero(`Por favor, escolha uma opção: `);
+      switch (opcao) {
+        case 1:
+          let listarProdutos = new produtosListagem(empresa);
+          listarProdutos.listar();
+          break
+
+        case 2:
+          let listarProdutosGenero = new ProdutosGenero(empresa);
+          listarProdutosGenero.listar();
+
+          break
+
+        default:
+          console.log(`Escolha Alguma opção corretamente '='  `)
+          break
+      }
+      break
+      // let editarProd = new EdicaoProdutos(empresa);
+      // editarProd.editar();
+    case 9:
       let editarProd = new EdicaoProdutos(empresa);
       editarProd.editar();
       break;
-    case 8:
+    case 10:
       let excluirProd = new ExclusaoProdutos(empresa);
       excluirProd.excluir();
       break;
-
-    case 9:
-      let cadastrarServ = new CadastroServico(empresa);
-      cadastrarServ.cadastrar();
-      break;
-    case 10:
-      let listarServ = new ListagemServicos(empresa);
-      listarServ.listar();
-      break;
     case 11:
-      let editarServ = new EdicaoServicos(empresa);
-      editarServ.editar();
-      break;
-    case 12:
-      let excluirServ = new ExclusaoServicos(empresa);
-      excluirServ.excluir();
-      break;
-    case 13:
       let cadastrarPedido = new CadastroPedido(empresa);
       cadastrarPedido.cadastrar();
       break;
-    case 14:
-      let excluirPedido = new ExclusaoPedido(empresa);
+    case 12:
+      let excluirPedido = new DeletePedido(empresa);
       excluirPedido.excluir();
       break;
-    case 15:
-      let listarPedido = new ListagemPedido(empresa);
+    case 13:
+      let listarPedido = new ListaPedido(empresa);
       listarPedido.listar();
+      break;
     case 0:
       execucao = false;
       console.log(`Bye!`);

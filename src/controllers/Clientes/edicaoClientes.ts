@@ -14,7 +14,7 @@ export default class EdicaoClientes extends Edicao {
   }
 
   public editar(): void {
-    let cpf = this.entrada.receberTexto(`Por favor, escolha um CPF:`);
+    let cpf = this.entrada.receberTexto(`Por favor, digite o CPF que deseja Atualizar:`);
     const updatedCustomers: Customer[] = [];
     this.filial.getClientes.map((customer) => {
       if (customer.getCPF === cpf) {

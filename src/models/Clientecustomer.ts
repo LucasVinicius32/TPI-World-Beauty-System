@@ -1,20 +1,20 @@
 export default class Customer {
     public nome: string
-    private CPF: string //Idenficador
+    private cpf: string 
     private RG: string
     private telefone: number
     private genero : string
 
     constructor(nome: string, cpf: string, rg: string, telefone: number , genero: string) {
         this.nome = nome
-        this.CPF = cpf
+        this.cpf = cpf
         this.RG = rg
         this.telefone = telefone
         this.genero = genero
     }
 
     public get getCPF(): string {
-        return this.CPF
+        return this.cpf
     }
     public get getRG(): string {
         return this.RG
@@ -26,7 +26,7 @@ export default class Customer {
         return this.genero
     }
     public setCPF(cpf: string) {
-        this.CPF = cpf
+        this.cpf = cpf
     }
 
     public setRG(rg: string) {

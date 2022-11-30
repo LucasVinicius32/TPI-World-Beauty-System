@@ -14,7 +14,7 @@ export default class ExclusaoClientes extends Exclusao {
   }
 
   public excluir(): void {
-    let cpf = this.entrada.receberTexto(`Por favor, escolha um CPF:`);
+    let cpf = this.entrada.receberTexto(`Por favor, digite o CPF do cliente que deseja excluir:`);
     const updatedCustomers: Customer[] = [];
     this.filial.getClientes.forEach((customer) => {
       if (customer.getCPF !== cpf) {

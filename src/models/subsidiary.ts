@@ -1,26 +1,40 @@
 import Customer from "./Clientecustomer";
 import Product from "./product";
-import Service from "./service";
-
+import { Pedido } from "./pedidos";
 export default class Subsidiary {
   public codigo: number;
   public nome: string;
   public endereco: string;
+  public Pedido: Pedido[];
   private listaClientes: Customer[];
   private listaClienteGenero: Customer[];
   private listaProdutos: Product[];
-  private listaServicos: Service[];
-
+  // private listaPedidos: Pedido[];
+ 
   constructor(codigo: number, nome: string, endereco: string) {
     this.codigo = codigo;
     this.nome = nome;
     this.endereco = endereco;
+    this.Pedido = [];
     this.listaClientes = [];
     this.listaClienteGenero = [];
     this.listaProdutos = [];
-    this.listaServicos = [];
+    // this.listaPedidos = [];
   }
 
+  public addPedido(pedido: Pedido) {
+    const pedidos = this.Pedido;
+    pedidos.push(pedido);
+    this.Pedido = pedidos;
+  }
+  
+  public get getPedidos(): Pedido[] {
+    return this.Pedido || [];
+  }
+  public setPedido(Pedido: Pedido[]) {
+    this.Pedido = Pedido;
+  }
+  
   public get getClienteGenero(): Customer[] {
     return this.listaClienteGenero;
   }
@@ -30,9 +44,6 @@ export default class Subsidiary {
   }
   public get getProdutos(): Product[] {
     return this.listaProdutos;
-  }
-  public get getServicos(): Service[] {
-    return this.listaServicos;
   }
 
   public addCliente(cliente: Customer) {
@@ -54,14 +65,7 @@ export default class Subsidiary {
   public setProdutos(produto: Product[]) {
     this.listaProdutos = produto;
   }
+ 
 
-  public addServico(servico: Service) {
-    const servicos = this.listaServicos;
-    servicos.push(servico);
-    this.listaServicos = servicos;
-  }
 
-  public setServicos(servico: Service[]) {
-    this.listaServicos = servico;
-  }
 }

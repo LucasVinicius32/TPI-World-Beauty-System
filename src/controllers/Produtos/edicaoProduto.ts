@@ -14,13 +14,13 @@ export default class EdicaoProdutos extends Edicao {
   }
 
   public editar(): void {
-    let codigo = this.entrada.receberNumero(`Por favor, escolha um código de produto:`);
+    let codigo = this.entrada.receberNumero(`Por favor, digite o código do produto que deseja atualizar :`);
     const updatedProduct: Product[] = [];
     this.filial.getProdutos.forEach((product) => {
       if (product.codigo === codigo) {
-        product.nome = this.entrada.receberTexto(`Novo Nome: `);
-        product.setValorUnit(this.entrada.receberNumero(`Novo Valor Unitário: R$ `));
-        product.setMarca(this.entrada.receberTexto(`Nova Marca `));
+        product.nome = this.entrada.receberTexto(`Novo nome do Produto: `);
+        product.setValorUnit(this.entrada.receberNumero(`Novo Valor unitário do Produto: R$ `));
+        product.setMarca(this.entrada.receberTexto(`Nova Marca do Produto: `));
         console.log('\nAs informações foram atualizadas com sucesso!\n')
       }
       
