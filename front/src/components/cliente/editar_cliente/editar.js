@@ -1,36 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import NavBar from '../../navbar/navbar'
-import { CreateCliente } from '../../../services/request'
-import './style.css'
 
-
-
-const CadastroCliente = () => {
-
-
-  const [cliente, setValues] = useState([]);
-
-  const handChange = (value) => {
-    setValues(preValue => ({
-
-      ...preValue,
-      [value.target.name]: value.target.value,
-
-    }))
-  }
-
+const Editar = () => {
   return (
     <>
-      <NavBar />
+    <NavBar />
       <main>
         <div className="container">
-          <h2>Cadastro de Clientes</h2>
+          <h2>Atualizar Dados</h2>
           <form>
             <div className="detail">
               <div className="input-box">
                 <span>Nome</span>
                 <input
-                  onChange={handChange}
+                //   onChange={handChange}
                   name="nome"
                   placeholder="Digite seu Nome Completo"
                   required
@@ -39,7 +22,7 @@ const CadastroCliente = () => {
               <div className="input-box">
                 <span>CPF</span>
                 <input
-                  onChange={handChange}
+                //   onChange={handChange}
                   type="text"
                   name="cpf"
                   maxLength={12}
@@ -50,7 +33,7 @@ const CadastroCliente = () => {
               <div className="input-box">
                 <span>RG</span>
                 <input
-                  onChange={handChange}
+                //   onChange={handChange}
                   type="text"
                   name="rg"
                   maxLength={10}
@@ -61,7 +44,7 @@ const CadastroCliente = () => {
               <div className="input-box">
                 <span>Telefone</span>
                 <input
-                  onChange={handChange}
+                //   onChange={handChange}
                   type="text"
                   name="telefone"
                   maxLength={10}
@@ -94,16 +77,15 @@ const CadastroCliente = () => {
             <div className="button-registration">
               <input
                 type="submit"
-                value="CADASTRAR"
-                onClick={() => CreateCliente(cliente)}
+                value="Atualizar"
+                // onClick={() => CreateCliente(cliente)}
               />
             </div>
           </form>
         </div>
       </main>
     </>
-
   )
 }
 
-export default CadastroCliente
+export default Editar

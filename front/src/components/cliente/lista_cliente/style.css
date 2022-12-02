@@ -11,14 +11,18 @@
   table {
     padding: 0 60px;
   }
-  
-  .title-table{
+  .title{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  h1, p{
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     color: rgb(44, 44, 44);
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
   }
   
   .table-section {
