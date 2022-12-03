@@ -14,6 +14,10 @@ yarn install
 ``` 
 Create DATABASE gerson;
 ``` 
+- Agora Mude dentro da pasta back/config/databaseConfig:
+```
+Colocando o database que você criou e a senha do seu banco de dados workbench
+```
 - Agora para rodar o projeto digite:
 ```
 Yarn start
