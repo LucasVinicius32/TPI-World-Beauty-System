@@ -1,7 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import NavBar from '../../navbar/navbar'
+import { UpdateProdutos } from '../../../services/request';
 
 const EditarProduto = () => {
+  const [Produtos, setValues] = useState([]);
+  
+  const handChange = (value) => {
+      setValues(preValue => ({
+
+          ...preValue,
+          [value.target.name]: value.target.value,
+
+      }))
+  }
+
+  var id = window.location.search.split('=')[1];
+
   return (
     <>
     <NavBar />
@@ -11,18 +25,18 @@ const EditarProduto = () => {
         <form>
           <div className="detail">
             <div className="input-box">
-              <span>Nome</span>
+              <span>Novo Nome</span>
               <input
-            //   onChange={handChange}
+              onChange={handChange}
                 name="nome"
                 placeholder="Digite o Nome do Produto"
                 required
               />
             </div>
             <div className="input-box">
-              <span>Valor</span>
+              <span>Novo Valor</span>
               <input
-                // onChange={handChange}
+                onChange={handChange}
                 type="text"
                 name="valor"
                 maxLength={12}
@@ -31,9 +45,9 @@ const EditarProduto = () => {
               />
             </div>
             <div className="input-box">
-              <span>Marca</span>
+              <span>Nova Marca</span>
               <input
-                // onChange={handChange}
+                onChange={handChange}
                 type="text"
                 name="marca"
                 maxLength={10}
@@ -47,7 +61,7 @@ const EditarProduto = () => {
             <input
               type="submit"
               value="Atualizar"
-            //   onClick={() => CreateProdutos(Produtos)}
+              onClick={() => UpdateProdutos(Produtos,id)}
             />
           </div>
         </form>

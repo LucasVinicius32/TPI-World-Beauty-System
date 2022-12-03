@@ -5,18 +5,19 @@ import { crud } from "./api";
 export async function CreateCliente(cliente){
   
     try {
-        const payload = {
+            const payload = {
             nome: cliente.nome,
             cpf: cliente.cpf,
             rg: cliente.rg,
             telefone: cliente.telefone,
-            genero: 'masculino',
-        };
-        await crud.post('/cliente', payload);
-        alert('Cliente cadastrado com sucesso!');
+            genero: cliente.genero,
+        }
+      
+         await crud.post('/cliente', payload); 
+         alert("Cliente cadastrado! ")
+       
     } catch (error) {
-        console.error(error);
-        alert(" Erro ao cadastrar cliente");
+        await alert(" Complete os campos corretamente");
     }
     
 }
@@ -32,30 +33,83 @@ export async function getAllCliente(){
 }
 
 export async function DeleteCliente(id){
-    console.log(id);
     try {
-        await crud.delete(`/cliente/${id}`);
         alert('Cliente deletado com sucesso!');
+        await crud.delete(`/cliente/${id}`);
     } catch (error) {
         console.error(error);
         alert(" Erro ao deletar cliente");
     }
 }
+
+export async function UpdateCliente(cliente,id){
+    try {
+        console.log(id);
+        const payload = {
+            nome: cliente.nome,
+            cpf: cliente.cpf,
+            rg: cliente.rg,
+            telefone: cliente.telefone,
+            genero: cliente.genero,
+        }
+        await crud.post(`/clienteUpdate/${id}`, payload);
+        alert("Cliente atualizado com sucesso!");
+    } catch (error) {
+        console.error(error);
+        alert(" Verifique os campos corretamente");
+    }
+}
+
+export async function get10topConsumidores(){
+    try {
+        const response = await crud.get('/top10consumidores');
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        alert(" Erro ao listar cliente");
+    }
+}
+
+export async function get05topConsumidoresValor(){
+    try {
+        const response = await crud.get('/top05consumidoresValor');
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        alert(" Erro ao listar cliente");
+    }
+}
+
+export async function gettopLass10consumidores(){
+    try {
+        const response = await crud.get('/topLass10consumidores');
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        alert(" Erro ao listar cliente");
+    }
+}
+
+
 // produto
 export async function CreateProdutos(Produtos){
 
 
 try {
+  
     const payload = {
         nome: Produtos.nome,
         valor: Produtos.valor,
         marca: Produtos.marca,
+        genero: Produtos.genero,
     };
+    
     await crud.post('/produtos', payload);
+    alert ( " Produto cadastrado com sucesso!");
 }
 catch (error) {
     console.error(error);
-    alert(" Erro ao cadastrar produto");
+    alert(" Complete os campos corretamente ");
 }
 }
 
@@ -78,22 +132,38 @@ try {
     alert(" Erro ao deletar produto");
 }
 }
+
+export async function UpdateProdutos(Produtos,id){
+try {
+    const payload = {
+        nome: Produtos.nome,
+        valor: Produtos.valor,
+        marca: Produtos.marca,
+        genero: Produtos.genero,
+    };
+    await crud.post(`/produtoUpdate/${id}`, payload);
+} catch (error) {
+    console.error(error);
+    alert(" Verifique os campos corretamente");
+}
+}
 // pedido
 export async function CreatePedido(Pedido){
 
 
     try {
-        const payload = {
-            cpf: Pedido.cpf,
-            id_produto: Pedido.id_produto,
-            quantidade: Pedido.quantidade,
-        };
-        await crud.post('/pedidos', payload);
+            const payload = {
+                cpf: Pedido.cpf,
+                id_produto: Pedido.id_produto,
+                quantidade: Pedido.quantidade,
+            }
    
+        await crud.post('/pedidos', payload);
+        alert ( 'Pedido cadastrado com sucesso!');
     }
     catch (error) {
         console.error(error);
-        alert(" Erro ao cadastrar pedido" );
+        alert(" Verifique os campos corretamente" );
     }
 }
 
@@ -115,6 +185,33 @@ export async function getAllPedidos(){
         console.error(error);
         alert(" Erro ao listar pedido");
     }
+}
+
+export async function ProdutosMoreConsumidos(){
+    try{
+        const response = await crud.get('/ProdutosMoreConsumidos');
+        return response.data;
+    } catch (error){
+        console.error(error)
+        alert ("Erro ao listar Produtos")
+    }
+}
+
+export async function updateCliente(cliente){
+    try{
+        const payload = {
+            id_cliente: cliente.id_cliente,
+            nome: cliente.nome,
+            cpf: cliente.cpf,
+            rg:cliente.rg,
+            telefone:cliente.telefone,
+            genero: cliente.genero,
+        }
+    } catch(error){
+        console.error(error);
+        alert("Verifique os campos corretamente ")
+    }
+
 }
 
 

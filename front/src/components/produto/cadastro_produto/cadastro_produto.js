@@ -55,7 +55,33 @@ const CadastroProduto = () => {
                 required
               />
             </div>
+            <div className="input-box">
+                <span>Gênero</span>
+                <select  onChange={handChange}
+                  name="genero" 
+                  required
+                  >
+                  <option
+                    value=""
+                    required
+                    selected>
+                    Selecione seu Gênero
+                  </option>
+
+                  <option
+                    value="masculino"
+                    required
+                  >Masculino</option>
+                  <option
+                    value="feminino"
+                    required
+                  >Feminino</option>
+
+                </select>
+              </div>
           </div>
+        
+              
 
           <div className="button-registration">
             <input

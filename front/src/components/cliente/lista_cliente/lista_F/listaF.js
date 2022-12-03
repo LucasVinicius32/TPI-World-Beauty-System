@@ -2,7 +2,7 @@ import React ,{useEffect, useState}from 'react'
 import CardMasculino from '../../../CardClientes/CardClienteMasculino'
 import { getAllCliente } from '../../../../services/request'
 
-const ListaGenero = () => {
+const ListaGeneroFeminino = () => {
 
     const [clienteMasculino, setCliente] = useState([])
 
@@ -16,7 +16,7 @@ const ListaGenero = () => {
                 <h1 className="title-table">
                     Lista dos Clientes
                 </h1>
-                <p>classificados por gênero masculino </p>
+                <p>classificados por gênero feminino </p>
             </div>
 
             <div className="table-section">
@@ -33,7 +33,7 @@ const ListaGenero = () => {
                     <tbody>
                         {
                 clienteMasculino  && clienteMasculino.map((cliente) => {
-                  return ( cliente.genero == 'masculino' ?(
+                  return ( cliente.genero == 'feminino' ?(
                     <CardMasculino 
                       key={cliente.id}
                       id={cliente.id_cliente}
@@ -53,4 +53,4 @@ const ListaGenero = () => {
     )
 }
 
-export default ListaGenero
+export default ListaGeneroFeminino

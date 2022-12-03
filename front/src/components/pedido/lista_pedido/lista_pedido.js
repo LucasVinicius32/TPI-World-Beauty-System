@@ -1,6 +1,6 @@
 import React , {useEffect, useState} from 'react'
 import NavBar from '../../navbar/navbar'
-import CardPedido from '../../Card/CardPedidos'
+import PedidoCard from '../../CardPedidos/CardProduto'
 import { getAllPedidos } from '../../../services/request'
 import './style.css'
 
@@ -12,13 +12,12 @@ const ListaPedido = () => {
     getAllPedidos().then((response) => setPedidos(response));
   }, []);
 
-  // console.log(pedidos);
   return (
     <>
     <NavBar />
     <main>
       <h1 className="title-table">
-        Lista de Pedidos 
+        Lista de Todos os Pedidos 
       </h1>
       
       <div className="table-section">
@@ -29,19 +28,20 @@ const ListaPedido = () => {
               <th>id_produto</th>
               <th>Quantidade</th>
               <th>Valor_Total</th>
+              <th>id_cliente</th>
             </tr>
           </thead>
           <tbody>
           {
                 pedidos && pedidos.map((pedidos) => {
                   return ( 
-                    <CardPedido
+                    <PedidoCard
                       key={pedidos.id}
                       id={pedidos.id_pedido}
+                      id_produto = {pedidos.id_produto}
                       quantidade={pedidos.quantidade}
                       valor_total={pedidos.valor_total}
                       id_cliente={pedidos.id_cliente}
-                      id_produto = {pedidos.id_produto}
                     />
                   )
                 })

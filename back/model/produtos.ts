@@ -27,6 +27,11 @@ Produtos.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    genero: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
   },
   {
     timestamps: false,

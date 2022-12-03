@@ -48,7 +48,7 @@ const CadastroPedido = () => {
             </div>
             <div className="input-box">
               <span>Quantidade</span>
-              <select onChange={handChange} name="quantidade">
+              <select onChange={handChange} name="quantidade" required>
               <option value="" selected>
                 Selecione
               </option>

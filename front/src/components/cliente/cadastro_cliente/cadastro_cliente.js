@@ -71,20 +71,24 @@ const CadastroCliente = () => {
               </div>
               <div className="input-box">
                 <span>Gênero</span>
-                <select
-                  name="opcao2"
+                <select  onChange={handChange}
+                  name="genero" 
+                  required
                   >
                   <option
-                    value="todos"
+                    value=""
+                    required
                     selected>
                     Selecione seu Gênero
                   </option>
 
                   <option
                     value="masculino"
+                    required
                   >Masculino</option>
                   <option
                     value="feminino"
+                    required
                   >Feminino</option>
 
                 </select>

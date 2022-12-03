@@ -6,25 +6,40 @@ import { Produtos } from "../model/produtos";
 export class PedidosControllers {
 
   async create(req: Request, res: Response) {
+
+    
     const {cpf} = req.body;
     try {
       const Clientes = await Cliente.findOne({where: {cpf}});
       const produtos = await Produtos.findOne({where: {id_produto: req.body.id_produto}});
+      
+
+      const allprodutos = await Produtos.findAll()
+
+      var condicao = false
 
       const id_cliente = Clientes?.getDataValue('id_cliente');
 
-      const valortotal = produtos?.getDataValue('valor') * req.body.quantidade;
-      console.log(valortotal);
       
+      
+      if(typeof(id_cliente) == undefined || req.body.id_produto in (allprodutos) == false || produtos == null){
+        var condicao = true
+        return res.status(500).json({ error: "ERROR" });
+      }
 
-  const pedidos = await Pedidos.create({ cpf: cpf , 
-    id_produto : req.body.id_produto,
-     quantidade: req.body.quantidade, 
-     valor_total: valortotal, 
-     id_cliente: id_cliente});
-  // const pedidos2 = await Pedidos.create({...req.body})
+      const valortotal = produtos?.getDataValue('valor') * req.body.quantidade;
 
-      return res.json(pedidos);
+
+      if (condicao == false){
+        const pedidos = await Pedidos.create({ cpf: cpf , 
+          id_produto : req.body.id_produto,
+           quantidade: req.body.quantidade, 
+           valor_total: valortotal, 
+           id_cliente: id_cliente});
+       
+            return res.json(pedidos);
+      }
+ 
     } catch (e) {
       return res.status(500).json({ error: "Cannot create pedidos" });
     }
@@ -45,7 +60,7 @@ export class PedidosControllers {
 
 async getById(req: Request, res: Response) {
   const {id} = req.params;
-  console.log(id);
+
   
   try {
     const pedidos = await Pedidos.findByPk(id);

@@ -45,6 +45,7 @@ route.delete(
 route.get(
     "/pedido/getById/:id",
     PedidosControllers.getById);
+
 route.get("/pedidos/getall",
 PedidosControllers.getAll)
 
@@ -72,5 +73,19 @@ route.get(
     ProdutosControllers.getAll
 )
 
+// ------------------------------------------------------------------------------------------------------------------------------
+
+route.get("/top10consumidores",
+ClienteControllers.top10consumidores)
+
+route.get("/topLass10consumidores",
+ClienteControllers.topLass10consumidores)
+
+route.get("/top05consumidoresValor",
+ClienteControllers.top05consumidoresValor)
+
+route.get("/ProdutosMoreConsumidos",
+ProdutosControllers.ProdutosMoreConsumidos
+)
 
 export default route;

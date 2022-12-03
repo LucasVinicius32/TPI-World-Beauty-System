@@ -1,24 +1,20 @@
-import React ,{useEffect, useState} from 'react'
-import CardProduto from '../../Card/CardProduto'
-import { getAllProdutos } from '../../../services/request'
+import React from 'react'
 import NavBar from '../../navbar/navbar'
 import ListaProdutoGenero from './lista_genero/lista'
 import ListaProdutoConsumo from './lista_consumo/lista'
+import ListaProdutoGeneroFeminino from './lista_genero/listaF'
 
 const ListaProduto = () => {
-  const [produtos, setProdutos] = useState([])
 
-
-  useEffect(() => {
-    getAllProdutos().then((response) => setProdutos(response));
-  }, []);
 
 
   return (
     <>
       <NavBar />
-      <ListaProdutoGenero />
       <ListaProdutoConsumo />
+      <ListaProdutoGenero />
+      <ListaProdutoGeneroFeminino />
+   
     </>
   )
 }

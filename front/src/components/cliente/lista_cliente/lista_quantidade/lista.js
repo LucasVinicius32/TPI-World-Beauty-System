@@ -1,12 +1,21 @@
-import React from 'react'
-
+import React ,{useEffect, useState}from 'react'
+import Card from '../../../CardClientes/CardCliente'
+import { get10topConsumidores } from '../../../../services/request'
 
 const ListaQuantidade = () => {
+    const [cliente, setCliente] = useState([])
+
+
+  useEffect(() => {
+    get10topConsumidores().then((response) => setCliente(response));
+  }, []);
+
+
     return (
         <main>
             <div className='title'>
                 <h1 className="title-table">
-                    Lista dos Clientes
+                    Lista dos Clientes 10 
                 </h1>
                 <p>com maior consumo em quantidade</p>
             </div>
@@ -24,20 +33,21 @@ const ListaQuantidade = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {
+                        {
                 cliente && cliente.map((cliente) => {
                   return ( 
                     <Card
-                      key={cliente.id}
-                      id={cliente.id_cliente}
-                      nome={cliente.nome}
-                      cpf={cliente.cpf}
-                      rg={cliente.rg}
-                      telefone={cliente.telefone}
+                      key={cliente.cliente.id_cliente}
+                      id={cliente.cliente.id_cliente}
+                      nome={cliente.cliente.nome}
+                      cpf={cliente.cliente.cpf}
+                      rg={cliente.cliente.rg}
+                      telefone={cliente.cliente.telefone}
+                      quantidade = {cliente.qntConsumida}
                     />
                   )
                 })
-              } */}
+              }
                     </tbody>
                 </table>
             </div>

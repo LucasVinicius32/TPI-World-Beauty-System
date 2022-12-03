@@ -1,9 +1,7 @@
 import React , {useState, useEffect} from 'react'
 import { ProdutosMoreConsumidos } from '../../../../services/request';
-import CardProdutosMoreConsumidos from '../../../CardProdutos/CardPedidos';
-
-const ListaProdutoConsumo = () => {
-
+import FemininoCard from '../../../CardProdutos/MasculinoCard';
+const ListaProdutoGeneroFeminino = () => {
     const [produtos, setProduto] = useState([])
 
 
@@ -17,32 +15,34 @@ const ListaProdutoConsumo = () => {
                 <h1 className="title-table">
                     Lista dos Produtos
                 </h1>
-                <p>que mais foram consumidos</p>
+                <p>que mais foram consumidos por gênero Feminino</p>
             </div>
 
             <div className="table-section">
                 <table>
                     <thead>
                         <tr>
-                            <th>Id_Produto</th>
                             <th>Nome</th>
                             <th>Valor</th>
                             <th>Marca</th>
                             <th>Quantidade</th>
+                            <th>Gênero</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                    {
                             produtos && produtos.map((produtos) => {
-                                return (
-                                    <CardProdutosMoreConsumidos
+                                return ( produtos.produto.genero === "feminino" ?(
+                                    <FemininoCard
                                         key={produtos.produto.id_produto}
                                         id={produtos.produto.id_produto}
                                         nome={produtos.produto.nome}
                                         valor_total={produtos.produto.valor}
                                         marca={produtos.produto.marca}
                                         quantidade = {produtos.qntConsumida}
-                                    />
+                                        genero = {produtos.produto.genero}
+                                    />) : null
                                 )
                             })
                         }
@@ -54,4 +54,4 @@ const ListaProdutoConsumo = () => {
     )
 }
 
-export default ListaProdutoConsumo
+export default ListaProdutoGeneroFeminino
