@@ -15,8 +15,8 @@ export default function MasculinoCard(props) {
       <td> {props.quantidade} </td>
       <td>{props.genero}</td>
       <td>
-        <button onClick={handleClick}>Editar</button>
-        <a href="/lista_produto"><button onClick={() => DeleteProdutos(props.id)}>Excluir</button></a> 
+        <button onClick={handleClick} className="editar">Editar</button>
+        <a href="/lista_produto"><button onClick={() => DeleteProdutos(props.id)} className="Excluir">Excluir</button></a> 
       </td>
     </tr>
   );

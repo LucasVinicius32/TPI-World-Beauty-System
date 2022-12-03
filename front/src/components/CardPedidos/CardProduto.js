@@ -11,7 +11,7 @@ export default function PedidoCard(props) {
       <td>{props.valor_total}</td>
       <td>{props.id_cliente}</td> 
       <td>
-        <a href="/lista_pedido"><button onClick={() => DeletePedidos(props.id)}>Excluir</button></a> 
+        <a href="/lista_pedido"><button onClick={() => DeletePedidos(props.id)} className="Excluir">Excluir</button></a> 
       </td>
     </tr>
   );

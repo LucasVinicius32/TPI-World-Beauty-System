@@ -1,5 +1,6 @@
 import React from "react";
 import { DeleteCliente } from "../../services/request";
+import './styleBotao.css'
 export default function CardClienteValor(props) {
   function handleClick() {
     window.location.href =
@@ -15,8 +16,8 @@ export default function CardClienteValor(props) {
       <td>{props.telefone}</td>
       <td>R$ {props.valor}</td>
       <td>
-        <button onClick={handleClick}>Editar</button>
-        <a href="/lista_cliente"><button onClick={() => DeleteCliente(props.id)}>Excluir</button></a> 
+        <button onClick={handleClick} className ="editar" >Editar</button>
+        <a href="/lista_cliente"><button onClick={() => DeleteCliente(props.id)} className ="Excluir">Excluir</button></a> 
       </td>
     </tr>
   );
