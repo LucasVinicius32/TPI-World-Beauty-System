@@ -22,3 +22,14 @@ Coloque o nome do database que você criou, e a senha do seu banco de dados work
 ```
 Yarn start
 ```
+## :railway_track: Opções disponiveis no projeto
+
+|                   | Clientes           | Produtos           | Serviços           | Pedidos            |
+| :---------------- | :----------------- | :----------------- | :----------------- | :----------------- |
+| Create            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Update            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:                |
+| Delete            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Listagem Geral    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+
+
+
