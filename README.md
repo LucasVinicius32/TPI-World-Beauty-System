@@ -1,14 +1,20 @@
-<h1 align="center">
-  Técnica de Programação I
-</h1>
+## Como fazer a aplicação rodar ##
 
-|Alunos|Nome|
-|:---:|:---:|
-|1|Lucas Vinicius da Silva Soares|
-|2|Victor dos Santos Salles|
+Tendo a ferramenta Git , NodeJS e workbench instalados em seu computador:
+- Abra o Prompt de Comando no caminho de um novo diretório e copie o seguinte comando para clonar o nosso repositório:
 
-## Atividade para Técnica de Programação I
-- Objetivo
-Este é um sistema para gerenciamento de um ambiente comercial, especificamente um salão de beleza, consistindo em uma série de opções acessadas via terminal que permitem cadastro, exclusão e alteração de informações sobre clientes, produtos, serviços e pedidos, além de possibilitar também a aplicação de alguns filtros para obter dados como "quais os clientes que mais consumiram em quantidade" ou "qual o produto mais consumido"
-
-
+```
+git clone https://github.com/LucasVinicius32/TPI-World-Beauty-System.git
+```
+- Dentro da pasta do projeto, digite o seguinte comando para baixar as dependências do projeto:
+```
+yarn install
+```
+- Agora Crie o database no seu Workbench:
+``` 
+Create DATABASE gerson;
+``` 
+- Agora para rodar o projeto digite:
+```
+Yarn start
+```
