@@ -18,3 +18,14 @@ npm install
 ```
 node main.js
 ```
+## :railway_track: Opções disponiveis no projeto
+
+|                   | Clientes           | Produtos           | Serviços           | Pedidos            |
+| :---------------- | :----------------- | :----------------- | :----------------- | :----------------- |
+| Create            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Update            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x:                |
+| Delete            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Listagem Geral    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Listagem Filtrada | :x:                | :x:                | :heavy_check_mark: | :heavy_check_mark: |
+
+
